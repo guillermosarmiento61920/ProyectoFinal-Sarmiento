@@ -1,0 +1,26 @@
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80vw;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.navegacion ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navegacion ul a {
+  text-decoration: none;
+  border: 1px solid grey;
+  color: inherit;
+  flex: 1;
+  text-align: center;
+}
+
+.navegacion a:hover {
+  color: #85807c;
+}

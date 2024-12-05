@@ -1,0 +1,14 @@
+h2 {
+  padding-left: 10%;
+  text-align: left;
+}
+
+.contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
