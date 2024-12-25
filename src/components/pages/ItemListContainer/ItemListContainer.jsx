@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { products } from "../../../products";
+// import { products } from "../../../products";
 import CardItem from "../../common/CardItem/CardItem";
 import { useParams } from "react-router-dom";
+import { db } from "../../../firebaseConfig";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import "./itemListContainer.css";
 
 export const ItemListContainer = () => {
@@ -11,27 +13,29 @@ export const ItemListContainer = () => {
   const [elements, setElement] = useState([]);
 
   useEffect(() => {
-    const filtradoProducto = products.filter(
-      (elemento) => elemento.category === name
-    );
+    let productsCollection = collection(db, "products");
 
-    const getProducts = new Promise((resolve, reject) => {
-      let isLogged = true;
-      if (isLogged) {
-        resolve(name ? filtradoProducto : products);
-      } else {
-        reject("ocurrio un error");
-      }
-    });
+    let refer = productsCollection;
+    if (name) {
+      let porcionCollection = query(
+        productsCollection,
+        where("category", "==", name)
+      );
+      refer = porcionCollection;
+    }
 
-    getProducts
-      .then((res) => {
-        setElement(res);
-      })
-      .catch((error) => {
-        console.log(error);
+    getDocs(refer).then((res) => {
+      let nuevoArray = res.docs.map((elemento) => {
+        return { ...elemento.data(), id: elemento.id };
       });
+
+      setElement(nuevoArray);
+    });
   }, [name]);
+
+  if (elements.length === 0) {
+    return <h2>cargando..</h2>;
+  }
 
   return (
     <div>

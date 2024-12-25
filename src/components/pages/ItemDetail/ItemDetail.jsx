@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { products } from "../../../products";
 import { useParams } from "react-router-dom";
 import Counter from "../../common/Counter/Counter";
+import { db } from "../../../firebaseConfig";
+import { collection, getDoc, doc } from "firebase/firestore";
 
 const ItemDetail = () => {
   const { id } = useParams();
@@ -9,8 +10,12 @@ const ItemDetail = () => {
   const [product, setProduct] = useState({});
 
   useEffect(() => {
-    const elementoEncontrado = products.find((elemento) => elemento.id === id);
-    setProduct(elementoEncontrado);
+    let productsCollection = collection(db, "products");
+    let refDoc = doc(productsCollection, id);
+
+    getDoc(refDoc).then((res) => {
+      setProduct({ id: res.id, ...res.data() });
+    });
   }, [id]);
 
   return (
@@ -27,7 +32,7 @@ const ItemDetail = () => {
       <h3>{product.description}</h3>
       <h4>En stock : {product.stock}</h4>
 
-      <Counter />
+      <Counter product={product} />
     </div>
   );
 };

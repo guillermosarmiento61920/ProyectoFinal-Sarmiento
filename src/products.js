@@ -1,16 +1,16 @@
 export let products = [
+  // {
+  //   id: "1",
+  //   title: "Vino + Gaseosa",
+  //   price: 5100,
+  //   description: "Combo con bebida gasificada",
+  //   imageUrl:
+  //     "https://res.cloudinary.com/dqofktg2z/image/upload/v1733092906/Vino_Gaseosa_wxcdgp.jpg",
+  //   stock: 51,
+  //   category: "combo",
+  // },
   {
-    id: "1",
-    title: "Vino + Gaseosa",
-    price: 5100,
-    description: "Combo con bebida gasificada",
-    imageUrl:
-      "https://res.cloudinary.com/dqofktg2z/image/upload/v1733092906/Vino_Gaseosa_wxcdgp.jpg",
-    stock: 51,
-    category: "combo",
-  },
-  {
-    id: "2",
+    // id: "2",
     title: "Vino + Jugo",
     price: 4700,
     description: "Combo con bebida frutal",
@@ -20,7 +20,7 @@ export let products = [
     category: "combo",
   },
   {
-    id: "3",
+    // id: "3",
     title: "Gaseosa",
     price: 2000,
     description: "Bebida gasificada sabor cola",
@@ -30,7 +30,7 @@ export let products = [
     category: "sinalcohol",
   },
   {
-    id: "4",
+    // id: "4",
     title: "Jugo",
     price: 1500,
     description: "Bebida sin gas, sabor naranja",
@@ -40,7 +40,7 @@ export let products = [
     category: "sinalcohol",
   },
   {
-    id: "5",
+    // id: "5",
     title: "Vino",
     price: 4000,
     description: "Vino de mendoza, variedad Malbec",
@@ -50,7 +50,7 @@ export let products = [
     category: "conalcohol",
   },
   {
-    id: "6",
+    // id: "6",
     title: "Cerveza",
     price: 3000,
     description: "Cerveza rubia",
