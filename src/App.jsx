@@ -6,8 +6,8 @@ import Cart from "./components/pages/Cart/Cart";
 import Footer from "./components/layout/Footer/Footer";
 import NotFound from "./components/pages/NotFound/NotFound";
 import Checkout from "./components/pages/Checkout/Checkout";
-import CartContextProvider from "./context/CartContext";
 
+import CartContextProvider from "./context/CartContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {

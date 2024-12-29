@@ -7,8 +7,20 @@ const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
   const agregarCart = (product) => {
-    setCart([...cart, product]);
+    let existeEnCarrito = cart.find((elemento) => elemento.id === product.id);
+
+    if (existeEnCarrito) {
+      let nuevoArray = cart.map((elemento) =>
+        elemento.id === product.id
+          ? { ...elemento, cantidad: elemento.cantidad + product.cantidad }
+          : elemento
+      );
+      setCart(nuevoArray);
+    } else {
+      setCart([...cart, product]);
+    }
   };
+
   const borrarItemCart = (id) => {
     let nuevoArray = cart.filter((elemento) => elemento.id !== id);
     setCart(nuevoArray);

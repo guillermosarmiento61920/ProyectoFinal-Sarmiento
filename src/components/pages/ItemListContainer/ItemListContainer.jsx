@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useEffect } from "react";
-// import { products } from "../../../products";
 import CardItem from "../../common/CardItem/CardItem";
 import { useParams } from "react-router-dom";
 import { db } from "../../../firebaseConfig";
 import { collection, getDocs, query, where } from "firebase/firestore";
+import Skeleton from "@mui/material/Skeleton";
 import "./itemListContainer.css";
 
 export const ItemListContainer = () => {
@@ -34,7 +34,19 @@ export const ItemListContainer = () => {
   }, [name]);
 
   if (elements.length === 0) {
-    return <h2>cargando..</h2>;
+    return (
+      <div className="skeleton-container">
+        {[...Array(4)].map((_, index) => (
+          <Skeleton
+            key={index}
+            variant="rectangular"
+            width={210}
+            height={118}
+            style={{ margin: "10px" }}
+          />
+        ))}
+      </div>
+    );
   }
 
   return (
